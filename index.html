@@ -1,1 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Travel Destination Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
+  <h1>🌍 AI Travel Destination Generator</h1>
+
+  <!-- Form -->
+  <form class="travel-form">
+    <label for="destination">Choose a destination:</label>
+    <select id="destination">
+      <option value="">-- Select a place --</option>
+      <option value="paris">Paris</option>
+      <option value="london">London</option>
+      <option value="newyork">New York</option>
+      <option value="brazil">Brazil</option>
+    </select>
+
+    <button type="button" id="generate-btn">Generate</button>
+  </form>
+
+  <!-- Results -->
+  <div class="container">
+
+    <div class="card" data-place="paris">
+      <h2>🇫🇷 Paris, France</h2>
+      <ul>
+        <li>Eiffel Tower</li>
+        <li>Louvre Museum</li>
+        <li>Montmartre</li>
+        <li>Seine River Cruise</li>
+        <li>Champs-Élysées</li>
+      </ul>
+      <p>Paris is the city of love, art, and fashion.</p>
+    </div>
+
+    <div class="card" data-place="london">
+      <h2>🇬🇧 London, United Kingdom</h2>
+      <ul>
+        <li>Big Ben</li>
+        <li>Buckingham Palace</li>
+        <li>London Eye</li>
+        <li>British Museum</li>
+        <li>Camden Market</li>
+      </ul>
+      <p>London blends royal history with modern culture.</p>
+    </div>
+
+    <div class="card" data-place="newyork">
+      <h2>🇺🇸 New York City, USA</h2>
+      <ul>
+        <li>Statue of Liberty</li>
+        <li>Central Park</li>
+        <li>Times Square</li>
+        <li>Brooklyn Bridge</li>
+        <li>Empire State Building</li>
+      </ul>
+      <p>The city that never sleeps is full of energy.</p>
+    </div>
+
+    <div class="card" data-place="brazil">
+      <h2>🇧🇷 Brazil</h2>
+      <ul>
+        <li>Rio de Janeiro</li>
+        <li>Christ the Redeemer</li>
+        <li>Amazon Rainforest</li>
+        <li>Iguazu Falls</li>
+        <li>Carnival Festival</li>
+      </ul>
+      <p>Brazil is vibrant, colorful, and full of life.</p>
+    </div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const button = document.querySelector("#generate-btn");
+    const select = document.querySelector("#destination");
+    const cards = document.querySelectorAll(".card");
+
+    // Hide all cards on page load
+    cards.forEach(card => card.style.display = "none");
+
+    button.addEventListener("click", function () {
+      const selectedPlace = select.value;
+
+      // Hide all cards
+      cards.forEach(card => card.style.display = "none");
+
+      if (!selectedPlace) {
+        alert("Please select a destination ✈️");
+        return;
+      }
+
+      // Show selected card
+      const selectedCard = document.querySelector(
+        `.card[data-place="${selectedPlace}"]`
+      );
+
+      if (selectedCard) {
+        selectedCard.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
